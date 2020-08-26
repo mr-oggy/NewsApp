@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "539094180134",
+    "firebase_url": "https://notes-eec2b.firebaseio.com",
+    "project_id": "notes-eec2b",
+    "storage_bucket": "notes-eec2b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539094180134:android:bfef4b9c8d8861be2161e7",
+        "android_client_info": {
+          "package_name": "com.abhishek.news"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "539094180134-c3iv3ip4a25puib1576grafhmii6a8ai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAahYUWy_ZomTZOp5Wqu6pUpYZKPuQpOyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "539094180134-c3iv3ip4a25puib1576grafhmii6a8ai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539094180134:android:6bc23c87c16884cf2161e7",
+        "android_client_info": {
+          "package_name": "com.abhishek.note_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "539094180134-c3iv3ip4a25puib1576grafhmii6a8ai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAahYUWy_ZomTZOp5Wqu6pUpYZKPuQpOyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "539094180134-c3iv3ip4a25puib1576grafhmii6a8ai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

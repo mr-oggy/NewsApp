@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:news/src/loginDetails/services/auth.dart';
 
 class MyDrawer extends StatelessWidget {
+  final AuthService _auth = AuthService();
   final Function closeDrawer;
   MyDrawer({this.closeDrawer});
   @override
@@ -47,13 +49,22 @@ class MyDrawer extends StatelessWidget {
         ),
         ListTile(
           title: Text(
-            "....",
+            "Log Out",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20,
             ),
           ),
-          onTap: () {
+          leading: Icon(
+            Icons.person,
+            color: Colors.black,
+          ),
+          trailing: Icon(
+            Icons.logout,
+            color: Colors.black,
+          ),
+          onTap: () async {
+            await _auth.signOut();
             closeDrawer();
           },
         ),

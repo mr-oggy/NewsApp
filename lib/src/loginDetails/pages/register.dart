@@ -1,16 +1,17 @@
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:news/common/constants.dart';
 import 'package:news/common/loading.dart';
 import 'package:news/src/loginDetails/services/auth.dart';
 
-class LogIn extends StatefulWidget {
+class Register extends StatefulWidget {
   final Function toggleView;
-  LogIn({this.toggleView});
+  Register({this.toggleView});
   @override
-  _LogInState createState() => _LogInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _LogInState extends State<LogIn> {
+class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   bool loading = false;
@@ -75,9 +76,37 @@ class _LogInState extends State<LogIn> {
                                   )),
                             ])),
                           ),
+                          //SizedBox(height: 20),
+                          Container(
+                              height: 20,
+                              width: MediaQuery.of(context).size.width,
+                              child: Text("Register",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FontStyle.italic,
+                                  ))),
                           SizedBox(height: 20),
                           TextFormField(
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(color: Colors.white),
+                            decoration: textInputDecoration.copyWith(
+                                suffixIcon: Icon(
+                                  Icons.person,
+                                  color: Colors.white,
+                                ),
+                                hintText: 'Enter your name',
+                                hintStyle: TextStyle(color: Colors.white),
+                                labelText: 'Name'),
+                            validator: (val) =>
+                                val.isEmpty ? 'Enter your name' : null,
+                            // onChanged: (val) {
+                            //   setState(() => email = val);
+                            // },
+                          ),
+                          SizedBox(height: 20),
+                          TextFormField(
+                            style: TextStyle(color: Colors.white),
                             decoration: textInputDecoration.copyWith(
                                 suffixIcon: Icon(
                                   Icons.email,
@@ -126,20 +155,19 @@ class _LogInState extends State<LogIn> {
                             child: RaisedButton.icon(
                               elevation: 4,
                               icon: Icon(
-                                Icons.login,
+                                Icons.app_registration,
                                 color: Colors.white,
                               ),
                               onPressed: () async {
                                 if (_formKey.currentState.validate()) {
                                   setState(() => loading = true);
                                   dynamic result =
-                                      await _auth.signInWithEmailAndPassword(
+                                      await _auth.signUpWithEmailAndPassword(
                                           email, password);
                                   if (result == null) {
                                     setState(
                                       () {
-                                        error =
-                                            'Invalid credentials check your email or password';
+                                        error = 'Please supply a valid email';
                                         loading = false;
                                       },
                                     );
@@ -151,11 +179,13 @@ class _LogInState extends State<LogIn> {
                                   side: BorderSide(
                                       color: Colors.green, width: 2.0)),
                               label: Text(
-                                'LogIn',
+                                'Register',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 18),
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold),
                               ),
-                              color: Colors.transparent,
+                              color: Colors.black,
                               splashColor: Colors.orange,
                               hoverColor: Colors.white,
                             ),
@@ -167,7 +197,7 @@ class _LogInState extends State<LogIn> {
                             child: RaisedButton.icon(
                               elevation: 4,
                               icon: Icon(
-                                Icons.app_registration,
+                                Icons.login,
                                 color: Colors.white,
                               ),
                               onPressed: () {
@@ -178,11 +208,11 @@ class _LogInState extends State<LogIn> {
                                   side: BorderSide(
                                       color: Colors.orange, width: 2.0)),
                               label: Text(
-                                'Register',
+                                'LogIn',
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 18),
                               ),
-                              color: Colors.transparent,
+                              color: Colors.black,
                               splashColor: Colors.green,
                               hoverColor: Colors.white,
                             ),

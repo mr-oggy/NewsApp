@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/common/loading.dart';
 import 'package:news/helper/data.dart';
 import 'package:news/helper/news_data.dart';
 import 'package:news/models/article_model.dart';
@@ -36,11 +37,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Container(
       child: _loading
-          ? Center(
-              child: Container(
-                child: CircularProgressIndicator(),
-              ),
-            )
+          ? Loading()
           : SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 16),

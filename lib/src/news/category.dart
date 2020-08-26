@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/common/loading.dart';
 import 'package:news/helper/categori_news_data.dart';
 import 'package:news/models/article_model.dart';
 import 'package:news/src/appBar/my_app_bar.dart';
@@ -35,11 +36,7 @@ class _CategoryState extends State<Category> {
       backgroundColor: Colors.black,
       appBar: MyAppBar(),
       body: _loading
-          ? Center(
-              child: Container(
-                child: CircularProgressIndicator(),
-              ),
-            )
+          ? Loading()
           : SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 16),
