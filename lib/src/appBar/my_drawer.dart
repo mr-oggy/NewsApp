@@ -1,6 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:news/connectors/wrapper.dart';
 import 'package:news/models/user.dart';
 import 'package:news/src/loginDetails/services/auth.dart';
 import 'package:provider/provider.dart';
