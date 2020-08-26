@@ -4,9 +4,9 @@ import 'package:news/models/user.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 //create user object based on firebasedUser
-  User _userFromFirebaseUser(FirebaseUser user) {
+  UserModel _userFromFirebaseUser(User user) {
     return user != null
-        ? User(
+        ? UserModel(
             uid: user.uid,
             name: user.displayName,
             email: user.email,
@@ -15,9 +15,9 @@ class AuthService {
   }
 
 //auth change user streem
-
-  Stream<User> get user {
-    return _auth.onAuthStateChanged
+  Stream<UserModel> get user {
+    return _auth
+        .authStateChanges()
         //.map((FirebaseUser user) => _userFromFirebaseUser(user));
         //in short
         .map(_userFromFirebaseUser);
@@ -26,8 +26,8 @@ class AuthService {
 //sign in anon
   Future signInAnon() async {
     try {
-      AuthResult result = await _auth.signInAnonymously();
-      FirebaseUser user = result.user;
+      UserCredential result = await _auth.signInAnonymously();
+      User user = result.user;
       return _userFromFirebaseUser(user);
     } catch (e) {
       return null;
@@ -37,9 +37,9 @@ class AuthService {
   //sign in with email and password
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
-      AuthResult result = await _auth.signInWithEmailAndPassword(
+      UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      FirebaseUser user = result.user;
+      User user = result.user;
       return _userFromFirebaseUser(user);
     } catch (e) {
       return null;
@@ -50,18 +50,12 @@ class AuthService {
   Future signUpWithEmailAndPassword(
       String email, String password, String name) async {
     try {
-      AuthResult result = await _auth.createUserWithEmailAndPassword(
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      FirebaseUser user = result.user;
-      UserUpdateInfo userUpdateInfo = UserUpdateInfo()
-        ..photoUrl = ''
-        ..displayName = name;
-      user.updateProfile(userUpdateInfo);
+      User user = result.user;
+
+      user.updateProfile(displayName: name);
       return _userFromFirebaseUser(user);
-      //// create a new document for the user with the uid
-      //   await DatabaseService(uid: user.uid)
-      //       .updateUserData('Monday', 'new User', 100);
-      //   return _userFromFirebaseUser(user);
     } catch (e) {
       return null;
     }
