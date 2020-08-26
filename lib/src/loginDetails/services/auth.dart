@@ -5,7 +5,13 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 //create user object based on firebasedUser
   User _userFromFirebaseUser(FirebaseUser user) {
-    return user != null ? User(uid: user.uid) : null;
+    return user != null
+        ? User(
+            uid: user.uid,
+            name: user.displayName,
+            email: user.email,
+          )
+        : null;
   }
 
 //auth change user streem
@@ -41,11 +47,16 @@ class AuthService {
   }
 
 //sign up with email and password
-  Future signUpWithEmailAndPassword(String email, String password) async {
+  Future signUpWithEmailAndPassword(
+      String email, String password, String name) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
+      UserUpdateInfo userUpdateInfo = UserUpdateInfo()
+        ..photoUrl = ''
+        ..displayName = name;
+      user.updateProfile(userUpdateInfo);
       return _userFromFirebaseUser(user);
       //// create a new document for the user with the uid
       //   await DatabaseService(uid: user.uid)
