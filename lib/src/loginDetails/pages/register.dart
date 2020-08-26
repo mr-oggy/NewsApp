@@ -78,14 +78,14 @@ class _RegisterState extends State<Register> {
                           ),
                           //SizedBox(height: 20),
                           Container(
-                              height: 20,
+                              alignment: Alignment.center,
+                              height: 30,
                               width: MediaQuery.of(context).size.width,
-                              child: Text("Register",
+                              child: Text("Create a new account",
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 18,
+                                    fontSize: 24,
                                     fontWeight: FontWeight.bold,
-                                    fontStyle: FontStyle.italic,
                                   ))),
                           SizedBox(height: 20),
                           TextFormField(

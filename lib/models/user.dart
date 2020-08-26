@@ -6,9 +6,7 @@ class User {
 
 class UserData {
   final String uid;
-  final String name;
-  final String date;
-  final int strength;
+  final String identifier;
 
-  UserData({this.uid, this.name, this.date, this.strength});
+  UserData({this.uid, this.identifier});
 }
