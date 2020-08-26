@@ -7,7 +7,8 @@ class NewsData {
   List<ArticalModel> newsData = [];
   Future<void> getNewsData() async {
     String url =
-        'http://newsapi.org/v2/top-headlines?country=in&apiKey=2be47d4c09364b70b11cacdcab10af34';
+        // 'http://newsapi.org/v2/top-headlines?country=in&apiKey=2be47d4c09364b70b11cacdcab10af34'; //sources :country=in ' in 'general' same content '
+        'http://newsapi.org/v2/top-headlines?sources=google-news-in&apiKey=2be47d4c09364b70b11cacdcab10af34'; //sources : google-news-in
     var response = await http.get(url);
     var jsonData = jsonDecode(response.body);
     if (jsonData['status'] == 'ok') {

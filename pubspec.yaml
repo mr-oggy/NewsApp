@@ -31,6 +31,8 @@ dependencies:
   http: ^0.12.2
   cached_network_image: ^2.2.0+1
   webview_flutter: ^0.3.22+1
+  foldable_sidebar: ^1.0.0
+  swipedetector: ^1.2.0
 
 dev_dependencies:
   flutter_test:

@@ -3,7 +3,6 @@ import 'package:news/helper/data.dart';
 import 'package:news/helper/news_data.dart';
 import 'package:news/models/article_model.dart';
 import 'package:news/models/categori_model.dart';
-import 'package:news/src/appBar/home_app_bar.dart';
 import 'package:news/src/methods/blog_tile.dart';
 import 'package:news/src/methods/category_tile.dart';
 
@@ -35,10 +34,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: HomeAppBar(),
-      body: _loading
+    return Container(
+      child: _loading
           ? Center(
               child: Container(
                 child: CircularProgressIndicator(),
