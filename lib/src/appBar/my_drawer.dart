@@ -44,8 +44,8 @@ class MyDrawer extends StatelessWidget {
                           category: 'general',
                         )));
           },
-          trailingIcon:
-              Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
+          // trailingIcon:
+          //     Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
         ),
         ListTileAll(
           closeDrawer: closeDrawer,
@@ -58,8 +58,8 @@ class MyDrawer extends StatelessWidget {
                           category: 'business',
                         )));
           },
-          trailingIcon:
-              Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
+          // trailingIcon:
+          //     Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
         ),
         ListTileAll(
           closeDrawer: closeDrawer,
@@ -72,8 +72,8 @@ class MyDrawer extends StatelessWidget {
                           category: 'technology',
                         )));
           },
-          trailingIcon:
-              Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
+          // trailingIcon:
+          //     Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
         ),
         ListTileAll(
           closeDrawer: closeDrawer,
@@ -86,8 +86,8 @@ class MyDrawer extends StatelessWidget {
                           category: 'science',
                         )));
           },
-          trailingIcon:
-              Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
+          // trailingIcon:
+          //     Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
         ),
         ListTileAll(
           closeDrawer: closeDrawer,
@@ -100,8 +100,8 @@ class MyDrawer extends StatelessWidget {
                           category: 'health',
                         )));
           },
-          trailingIcon:
-              Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
+          // trailingIcon:
+          //     Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
         ),
         ListTileAll(
           closeDrawer: closeDrawer,
@@ -114,8 +114,8 @@ class MyDrawer extends StatelessWidget {
                           category: 'entertainment',
                         )));
           },
-          trailingIcon:
-              Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
+          // trailingIcon:
+          //     Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
         ),
         ListTileAll(
           closeDrawer: closeDrawer,
@@ -128,8 +128,8 @@ class MyDrawer extends StatelessWidget {
                           category: 'sports',
                         )));
           },
-          trailingIcon:
-              Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
+          //trailingIcon:
+          // Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
         ),
         ListTileAll(
           closeDrawer: closeDrawer,

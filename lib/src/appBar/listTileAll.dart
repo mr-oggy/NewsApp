@@ -21,9 +21,7 @@ class ListTileAll extends StatelessWidget {
     return ListTile(
       title: Text(
         '$title',
-        style: TextStyle(
-          fontSize: 16,
-        ),
+        style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
       ),
       leading: leadingIcon, //qr_code,
       trailing: trailingIcon,
