@@ -16,6 +16,7 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     UserModel user = Provider.of<UserModel>(context);
     return Drawer(
+      elevation: 16,
       child: ListView(padding: const EdgeInsets.all(0), children: [
         UserAccountsDrawerHeader(
             decoration: BoxDecoration(color: Colors.black),
@@ -43,7 +44,8 @@ class MyDrawer extends StatelessWidget {
                           category: 'general',
                         )));
           },
-          trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.black),
+          trailingIcon:
+              Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
         ),
         ListTileAll(
           closeDrawer: closeDrawer,
@@ -56,7 +58,8 @@ class MyDrawer extends StatelessWidget {
                           category: 'business',
                         )));
           },
-          trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.black),
+          trailingIcon:
+              Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
         ),
         ListTileAll(
           closeDrawer: closeDrawer,
@@ -69,7 +72,8 @@ class MyDrawer extends StatelessWidget {
                           category: 'technology',
                         )));
           },
-          trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.black),
+          trailingIcon:
+              Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
         ),
         ListTileAll(
           closeDrawer: closeDrawer,
@@ -82,7 +86,8 @@ class MyDrawer extends StatelessWidget {
                           category: 'science',
                         )));
           },
-          trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.black),
+          trailingIcon:
+              Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
         ),
         ListTileAll(
           closeDrawer: closeDrawer,
@@ -95,7 +100,8 @@ class MyDrawer extends StatelessWidget {
                           category: 'health',
                         )));
           },
-          trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.black),
+          trailingIcon:
+              Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
         ),
         ListTileAll(
           closeDrawer: closeDrawer,
@@ -108,7 +114,8 @@ class MyDrawer extends StatelessWidget {
                           category: 'entertainment',
                         )));
           },
-          trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.black),
+          trailingIcon:
+              Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
         ),
         ListTileAll(
           closeDrawer: closeDrawer,
@@ -121,7 +128,8 @@ class MyDrawer extends StatelessWidget {
                           category: 'sports',
                         )));
           },
-          trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.black),
+          trailingIcon:
+              Icon(Icons.arrow_forward_ios_outlined, color: Colors.black54),
         ),
         ListTileAll(
           closeDrawer: closeDrawer,

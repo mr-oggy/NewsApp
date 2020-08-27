@@ -70,7 +70,7 @@ class _ProfilState extends State<Profil> {
                       splashRadius: 0.1,
                       icon: Icon(
                         Icons.settings,
-                        size: 40,
+                        size: 20,
                         color: Colors.white,
                       ),
                       onPressed: () {
@@ -138,13 +138,13 @@ class _ProfilState extends State<Profil> {
                     alignment: Alignment.topLeft,
                     child: Text(
                       'Name : ',
-                      style: TextStyle(color: Colors.orange, fontSize: 20),
+                      style: TextStyle(color: Colors.orange, fontSize: 16),
                     ),
                   ),
                 ),
                 Text(
                   '${user.name}',
-                  style: TextStyle(color: Colors.white, fontSize: 30),
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 SizedBox(height: 20),
                 Padding(
@@ -153,13 +153,13 @@ class _ProfilState extends State<Profil> {
                     alignment: Alignment.topLeft,
                     child: Text(
                       'User ID : ',
-                      style: TextStyle(color: Colors.orange, fontSize: 20),
+                      style: TextStyle(color: Colors.orange, fontSize: 16),
                     ),
                   ),
                 ),
                 Text(
                   '${user.email}',
-                  style: TextStyle(color: Colors.white, fontSize: 30),
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 SizedBox(height: 40),
                 RaisedButton.icon(
@@ -170,11 +170,11 @@ class _ProfilState extends State<Profil> {
                   icon: Icon(
                     Icons.save,
                     color: Colors.orange,
-                    size: 40,
+                    size: 20,
                   ),
                   label: Text(
                     'Save',
-                    style: TextStyle(color: Colors.green, fontSize: 40),
+                    style: TextStyle(color: Colors.green, fontSize: 20),
                   ),
                 ),
                 SizedBox(height: 60),
