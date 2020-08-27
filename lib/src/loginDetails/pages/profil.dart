@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:news/models/user.dart';
 import 'package:news/src/appBar/my_app_bar.dart';
+import 'package:news/src/loginDetails/pages/settingPage.dart';
 import 'package:path/path.dart' as Path;
 import 'package:provider/provider.dart';
 
@@ -19,12 +20,13 @@ class _ProfilState extends State<Profil> {
 
   File _image;
   final picker = ImagePicker();
+  String _uploadedFileURL;
   @override
   Widget build(BuildContext context) {
     UserModel user = Provider.of<UserModel>(context);
 
     Future getImage() async {
-      var image = await picker.getImage(source: ImageSource.camera);
+      var image = await picker.getImage(source: ImageSource.gallery);
       setState(() {
         _image = File(image.path);
       });
@@ -35,11 +37,17 @@ class _ProfilState extends State<Profil> {
       StorageReference firebaseStorageRef =
           FirebaseStorage.instance.ref().child(fileName);
       StorageUploadTask updateTask = firebaseStorageRef.putFile(_image);
+
       StorageTaskSnapshot taskSnapshort = await updateTask.onComplete;
-      setState(() {
-        Scaffold.of(context).showSnackBar(SnackBar(
-          content: Text('Profile Picture Uploaded'),
-        ));
+      firebaseStorageRef.getDownloadURL().then((fileURL) {
+        setState(() {
+          _uploadedFileURL = fileURL.toString();
+          if (taskSnapshort != null) {
+            Scaffold.of(context).showSnackBar(SnackBar(
+              content: Text('Profile Picture Uploaded'),
+            ));
+          }
+        });
       });
     }
 
@@ -52,6 +60,26 @@ class _ProfilState extends State<Profil> {
             child: Column(
               children: [
                 SizedBox(height: 40),
+                Container(
+                  padding: EdgeInsets.only(right: 16),
+                  alignment: Alignment.topRight,
+                  width: MediaQuery.of(context).size.width,
+                  height: 30,
+                  child: IconButton(
+                      splashColor: Colors.transparent,
+                      splashRadius: 0.1,
+                      icon: Icon(
+                        Icons.settings,
+                        size: 40,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SettingPage()));
+                      }),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -74,9 +102,8 @@ class _ProfilState extends State<Profil> {
                                 foregroundColor: Colors.red,
                                 backgroundImage: (_image != null)
                                     ? FileImage(_image)
-                                    : NetworkImage(
-                                        'https://images.unsplash.com/photo-1504567961542-e24d9439a724?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80',
-                                      ),
+                                    : NetworkImage(//_uploadedFileURL
+                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS1x-mIzfkx68Gcq9M8i0BmxU-6K86f_syHoQ&usqp=CAU'),
                               ),
                             ),
                           ),
@@ -159,88 +186,3 @@ class _ProfilState extends State<Profil> {
     );
   }
 }
-
-// class Profil extends StatefulWidget {
-
-//   const Profil({Key key}) : super(key: key);
-
-//   @override
-//   _ProfilState createState() => _ProfilState();
-// }
-
-// class _ProfilState extends State<Profil> {
-//   File _image;
-
-//   String _uploadedFileURL;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Firestore File Upload'),
-//       ),
-//       body: Center(
-//         child: Column(
-//           children: <Widget>[
-//             Text('Selected Image'),
-//             _image != null
-//                 ? Image.asset(
-//                     _image.path,
-//                     height: 150,
-//                   )
-//                 : Container(height: 150),
-//             _image == null
-//                 ? RaisedButton(
-//                     child: Text('Choose File'),
-//                     onPressed: chooseFile,
-//                     color: Colors.cyan,
-//                   )
-//                 : Container(),
-//             _image != null
-//                 ? RaisedButton(
-//                     child: Text('Upload File'),
-//                     onPressed: uploadFile,
-//                     color: Colors.cyan,
-//                   )
-//                 : Container(),
-//             _image != null
-//                 ? RaisedButton(
-//                     child: Text('Clear Selection'),
-//                     onPressed: clearSelection,
-//                   )
-//                 : Container(),
-//             Text('Uploaded Image'),
-//             _uploadedFileURL != null
-//                 ? Image.network(
-//                     _uploadedFileURL,
-//                     height: 150,
-//                   )
-//                 : Container(),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-
-//   Future chooseFile() async {
-//    await ImagePicker.pickImage(source: ImageSource.gallery).then((image) {
-//      setState(() {
-//        _image = image;
-//      });
-//    });
-//  }
-
-//  Future uploadFile() async {
-//    StorageReference storageReference = FirebaseStorage.instance
-//        .ref()
-//        .child('chats/${Path.basename(_image.path)}}');
-//    StorageUploadTask uploadTask = storageReference.putFile(_image);
-//    await uploadTask.onComplete;
-//    print('File Uploaded');
-//    storageReference.getDownloadURL().then((fileURL) {
-//      setState(() {
-//        _uploadedFileURL = fileURL;
-//      });
-//    });
-//  }
-// }

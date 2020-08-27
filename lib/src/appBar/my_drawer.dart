@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:news/src/appBar/listTileAll.dart';
+import 'package:news/src/news/category.dart';
+import 'package:provider/provider.dart';
+
 import 'package:news/models/user.dart';
 import 'package:news/src/loginDetails/pages/profil.dart';
 import 'package:news/src/loginDetails/services/auth.dart';
-import 'package:provider/provider.dart';
 
 class MyDrawer extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -29,26 +32,105 @@ class MyDrawer extends StatelessWidget {
               );
               closeDrawer();
             }),
-        ListTile(
-          title: Text(
-            "Log Out",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),
-          ),
-          leading: Icon(
-            Icons.person,
-            color: Colors.black,
-          ),
-          trailing: Icon(
-            Icons.logout,
-            color: Colors.black,
-          ),
-          onTap: () async {
-            await _auth.signOut();
-            closeDrawer();
+        ListTileAll(
+          closeDrawer: closeDrawer,
+          title: 'News in general',
+          navigate: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Category(
+                          category: 'general',
+                        )));
           },
+          trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.black),
+        ),
+        ListTileAll(
+          closeDrawer: closeDrawer,
+          title: 'Business news',
+          navigate: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Category(
+                          category: 'business',
+                        )));
+          },
+          trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.black),
+        ),
+        ListTileAll(
+          closeDrawer: closeDrawer,
+          title: 'Technology news',
+          navigate: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Category(
+                          category: 'technology',
+                        )));
+          },
+          trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.black),
+        ),
+        ListTileAll(
+          closeDrawer: closeDrawer,
+          title: 'Science news',
+          navigate: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Category(
+                          category: 'science',
+                        )));
+          },
+          trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.black),
+        ),
+        ListTileAll(
+          closeDrawer: closeDrawer,
+          title: 'Health news',
+          navigate: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Category(
+                          category: 'health',
+                        )));
+          },
+          trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.black),
+        ),
+        ListTileAll(
+          closeDrawer: closeDrawer,
+          title: 'Entertainment news',
+          navigate: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Category(
+                          category: 'entertainment',
+                        )));
+          },
+          trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.black),
+        ),
+        ListTileAll(
+          closeDrawer: closeDrawer,
+          title: 'Sports news',
+          navigate: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Category(
+                          category: 'sports',
+                        )));
+          },
+          trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.black),
+        ),
+        ListTileAll(
+          closeDrawer: closeDrawer,
+          title: 'Log Out',
+          navigate: () async {
+            await _auth.signOut();
+          },
+          trailingIcon: Icon(Icons.logout, color: Colors.black),
+          leadingIcon: Icon(Icons.person, color: Colors.black),
         ),
       ]),
     );

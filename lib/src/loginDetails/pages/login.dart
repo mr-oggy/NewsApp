@@ -77,6 +77,7 @@ class _LogInState extends State<LogIn> {
                           ),
                           SizedBox(height: 20),
                           TextFormField(
+                            keyboardType: TextInputType.emailAddress,
                             style: TextStyle(color: Colors.white, fontSize: 18),
                             decoration: textInputDecoration.copyWith(
                                 suffixIcon: Icon(
