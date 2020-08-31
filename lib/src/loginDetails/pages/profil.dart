@@ -106,7 +106,8 @@ class _ProfilState extends State<Profil> {
                                 backgroundImage: (_image != null)
                                     ? FileImage(_image)
                                     : CachedNetworkImageProvider(
-                                        _auth.getCurrentUser().photoURL ?? '',
+                                        _auth.getCurrentUser().photoURL ??
+                                            'https://images.unsplash.com/photo-1504567961542-e24d9439a724?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80',
                                       ),
                               ),
                             ),
