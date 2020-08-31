@@ -4,6 +4,11 @@ import 'package:news/models/user.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 //create user object based on firebasedUser
+
+  User getCurrentUser() {
+    return _auth.currentUser;
+  }
+
   UserModel _userFromFirebaseUser(User user) {
     return user != null
         ? UserModel(
@@ -54,7 +59,9 @@ class AuthService {
           email: email, password: password);
       User user = result.user;
 
-      user.updateProfile(displayName: name);
+      user.updateProfile(
+        displayName: name, //Todo: photoURL: uploadedFileURL.toString
+      );
       return _userFromFirebaseUser(user);
     } catch (e) {
       return null;

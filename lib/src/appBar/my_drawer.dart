@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news/src/appBar/listTileAll.dart';
 import 'package:news/src/news/category.dart';
@@ -23,8 +24,10 @@ class MyDrawer extends StatelessWidget {
             accountName: Text("${user.name}"),
             accountEmail: Text("${user.email}"),
             currentAccountPicture: CircleAvatar(
-              backgroundImage: NetworkImage(
-                  "https://images.unsplash.com/photo-1504567961542-e24d9439a724?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"),
+              backgroundImage: CachedNetworkImageProvider(
+                _auth.getCurrentUser().photoURL ??
+                    'https://images.unsplash.com/photo-1504567961542-e24d9439a724?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80',
+              ),
             ),
             onDetailsPressed: () {
               Navigator.push(

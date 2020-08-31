@@ -1,10 +1,13 @@
+import 'dart:developer';
 import 'dart:io';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:news/models/user.dart';
 import 'package:news/src/appBar/my_app_bar.dart';
 import 'package:news/src/loginDetails/pages/settingPage.dart';
+import 'package:news/src/loginDetails/services/auth.dart';
 import 'package:path/path.dart' as Path;
 import 'package:provider/provider.dart';
 
@@ -16,11 +19,10 @@ class Profil extends StatefulWidget {
 }
 
 class _ProfilState extends State<Profil> {
-  //final AuthService _auth = AuthService();
-
+  final AuthService _auth = AuthService();
   File _image;
   final picker = ImagePicker();
-  String _uploadedFileURL;
+
   @override
   Widget build(BuildContext context) {
     UserModel user = Provider.of<UserModel>(context);
@@ -39,17 +41,18 @@ class _ProfilState extends State<Profil> {
       StorageUploadTask updateTask = firebaseStorageRef.putFile(_image);
 
       StorageTaskSnapshot taskSnapshort = await updateTask.onComplete;
-      firebaseStorageRef.getDownloadURL().then((fileURL) {
-        setState(() {
-          _uploadedFileURL = fileURL.toString();
-          if (taskSnapshort != null) {
-            Scaffold.of(context).showSnackBar(SnackBar(
-              content: Text('Profile Picture Uploaded'),
-            ));
-          }
-        });
+      String photoUrl = await firebaseStorageRef.getDownloadURL();
+      await _auth.getCurrentUser().updateProfile(photoURL: photoUrl);
+      setState(() async {
+        if (taskSnapshort != null) {
+          Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text('Profile Picture Uploaded'),
+          ));
+        }
       });
     }
+
+    print(_auth.getCurrentUser().displayName);
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -102,8 +105,9 @@ class _ProfilState extends State<Profil> {
                                 foregroundColor: Colors.red,
                                 backgroundImage: (_image != null)
                                     ? FileImage(_image)
-                                    : NetworkImage(//_uploadedFileURL
-                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS1x-mIzfkx68Gcq9M8i0BmxU-6K86f_syHoQ&usqp=CAU'),
+                                    : CachedNetworkImageProvider(
+                                        _auth.getCurrentUser().photoURL ?? '',
+                                      ),
                               ),
                             ),
                           ),

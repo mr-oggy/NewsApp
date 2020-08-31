@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ListTileAll extends StatelessWidget {
-  String title;
-  Icon leadingIcon;
-  Icon trailingIcon;
+  final String title;
+  final Icon leadingIcon;
+  final Icon trailingIcon;
   ListTileAll({
     Key key,
     @required this.title,
