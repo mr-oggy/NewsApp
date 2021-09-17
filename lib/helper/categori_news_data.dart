@@ -7,7 +7,7 @@ class CategoryNewsData {
   List<ArticalModel> newsData = [];
   Future<void> getCategoryData(String category) async {
     String url =
-        'http://newsapi.org/v2/top-headlines?country=in&category=$category&category=business&apiKey=2be47d4c09364b70b11cacdcab10af34';
+        'http://newsapi.org/v2/top-headlines?country=in&category=$category&category=business&apiKey=API_KEY';
     var response = await http.get(url);
     var jsonData = jsonDecode(response.body);
     if (jsonData['status'] == 'ok') {
